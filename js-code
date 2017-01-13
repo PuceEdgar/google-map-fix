@@ -1,0 +1,33 @@
+ <!-- CSS code -->
+ #map {
+  display: none;
+ }
+ 
+ 
+ <!-- HTML code -->
+ <!-- create a button that will display google map when clicked -->
+ <button style="margin-bottom: 50px !important;" onclick="displayMap()">Show Map</button>
+ <div id="map" style="width:100%;height:500px"></div>
+ 
+ 
+ 
+ <!-- JS code -->
+ <!-- Displays map division -->
+ function displayMap() {    
+                    document.getElementById('map').style.display = "block";
+                    myMap(); 
+}
+
+<!-- Code to load google map -->
+function myMap() {
+  var mapCanvas = document.getElementById("map");
+  var myCenter = new google.maps.LatLng(37.3306496, 127.1530311); 
+  var mapOptions = {center: myCenter, zoom: 10};
+  var map = new google.maps.Map(mapCanvas,mapOptions);
+  var marker = new google.maps.Marker({
+    position: myCenter,
+    animation: google.maps.Animation.BOUNCE
+  });
+  marker.setMap(map);
+  google.maps.event.trigger(map, 'resize');
+}
